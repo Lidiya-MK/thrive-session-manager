@@ -12,7 +12,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/auth", authRoutes);
+app.use("/thrive/auth", authRoutes);
 
 
 app.get("/", (req, res) => {
