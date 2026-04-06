@@ -10,13 +10,13 @@ const createToken = (payload) => {
 };
 
 exports.registerMentor = async (req, res) => {
-  const { name, email, password, expertise } = req.body;
+  const { name, email, password } = req.body;
   try {
     const existing = await Mentor.findOne({ email });
     if (existing) return res.status(400).json({ message: "Mentor already exists" });
 
     const hashed = await bcrypt.hash(password, 10);
-    const mentor = await Mentor.create({ name, email, password: hashed, expertise });
+    const mentor = await Mentor.create({ name, email, password: hashed});
     const token = createToken({ id: mentor._id, role: "mentor" });
 
     res.status(201).json({ mentor: { id: mentor._id, name: mentor.name, email: mentor.email }, token });
