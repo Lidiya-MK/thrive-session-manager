@@ -4,8 +4,7 @@ const traineeSchema = new mongoose.Schema(
     {
         name:{type: String, required: true},
         email:{type: String, required: true, unique: true},
-        password:{type: String, required: true},
-        goals:{type: String},
+        password:{type: String, required: true}
     },
     {timeStamps: true}
 );
